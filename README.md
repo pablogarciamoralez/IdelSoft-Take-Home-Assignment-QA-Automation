@@ -3,7 +3,9 @@ IdelSoft Take-Home Assignment - Cypress E2E Tests
 Project Overview
     This project is an end-to-end (E2E) test automation framework built using Cypress to test the Magento eCommerce website. The framework includes UI and API tests, reusable custom commands, external test data, multi-environment support, automatic test reporting, and containerized execution.
 
+
 Features Implemented
+
     *Page Object Model (POM) for UI elements and actions.
     *Custom Cypress commands for reusable steps.
     *External test data management using JSON files.
