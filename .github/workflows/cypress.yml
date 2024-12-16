@@ -3,32 +3,54 @@ name: Run Cypress Tests
 on:
   push:
     branches:
-      - main
+      - main 
   pull_request:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 18 
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install Dependencies
+        run: npm install 
 
-      - name: Run Cypress tests
-        run: npx cypress run --reporter mochawesome
+      - name: Run Cypress Tests
+        run: npx cypress run 
 
-      - name: Upload Mochawesome Report
-        uses: actions/upload-artifact@v3
+      - name: Generate Mochawesome Report
+        if: always() 
+        run: |
+          npx mochawesome-merge "cypress/reports/*.json" > mochawesome.json
+          npx marge mochawesome.json -o mochawesome-report
+
+      - name: Upload Report as Artifact
+        if: always() 
+        uses: actions/upload-artifact@v4
         with:
           name: mochawesome-report
-          path: cypress/reports
+          path: mochawesome-report 
+
+      - name: Save Cypress Videos
+        if: always()  
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-videos
+          path: cypress/videos 
+
+      - name: Save Cypress Screenshots
+        if: always() 
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
