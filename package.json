@@ -1,0 +1,19 @@
+{
+  "devDependencies": {
+    "cypress": "^13.16.1",
+    "cypress-terminal-report": "^7.1.0",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.3.0",
+    "mochawesome-report-generator": "^6.2.0"
+  },
+  "dependencies": {
+    "@cypress/grep": "^4.1.0"
+  },
+  "scripts": {
+    "test:all": "npx cypress run",
+    "test:shopping": "npx cypress run --env grep=shopping",
+    "test:userOperation": "npx cypress run --env grep=user",
+    "test:searchingSorting": "npx cypress run --env grep=search",
+    "test:ci": "npx cypress run --reporter mochawesome"
+  }
+}

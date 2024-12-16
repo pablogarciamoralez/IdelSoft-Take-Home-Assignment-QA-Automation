@@ -1,0 +1,22 @@
+{
+    "credentials": {
+        "firstname": "Canis",
+        "lastname": "Malbec",
+        "password": "Password123",
+        "new_password": "Password1234",
+        "bad_password": "badpassword",
+        "email": "qwert@qwer.com",
+        "street": "Calle",
+        "state": "Cordoba, Alabama 12345",
+        "country": "United States",
+        "phone": "123123123"
+    },
+    "articles": {
+        "article_1": "pants"
+    },
+    "product_options": {
+        "size": 175,
+        "color_1": 49,
+        "color_2": 50
+    }
+}

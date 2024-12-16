@@ -1,0 +1,20 @@
+{
+  "urls": {
+    "home":"/",
+    "customer_account_creation": "/customer/account/create/",
+    "customer_account": "/customer/account/",
+    "customer_account_index": "/customer/account/index/",
+    "customer_account_changepass": "/customer/account/edit/changepass/1/",
+    "sign_in": "/customer/account/login/referer/aHR0cHM6Ly9tYWdlbnRvLnNvZnR3YXJldGVzdGluZ2JvYXJkLmNvbS8%2C/",
+    "catalogsearch": "/catalogsearch/result/",
+    "checkout_shipping": "/checkout/#shipping",
+    "checkout_payment": "/checkout/#payment",
+    "checkout_success": "/checkout/onepage/success/",
+    "payment_info_request": "/rest/default/V1/carts/mine/payment-information"
+  },
+  "messages": {
+    "registration_success": "Thank you for registering with Main Website Store.",
+    "password_changed": "You saved the account information.",
+    "failed_login": "The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later."
+  }
+}
