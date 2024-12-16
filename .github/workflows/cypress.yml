@@ -1,56 +1,56 @@
-name: Run Cypress Tests
+name: Cypress Tests
 
 on:
   push:
     branches:
-      - main 
-  pull_request:
-    branches:
       - main
   workflow_dispatch:
+    inputs:
+      grepTag:
+        description: 'Run tests with specific tag (e.g., @shopping, @sorting)'
+        required: false
+        default: ''
 
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install Node.js
-        uses: actions/setup-node@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 18 
+          node-version: '18'
 
-      - name: Install Dependencies
-        run: npm install 
+      - name: Install dependencies
+        run: npm install
 
-      - name: Run Cypress Tests
-        run: npx cypress run 
-
-      - name: Generate Mochawesome Report
-        if: always() 
+      - name: Run Cypress tests (all or specific tag)
         run: |
-          npx mochawesome-merge "cypress/reports/*.json" > mochawesome.json
-          npx marge mochawesome.json -o mochawesome-report
+          if [[ "${{ github.event.inputs.grepTag }}" != "" ]]; then
+            npx cypress run --env grepTags=${{ github.event.inputs.grepTag }}
+          else
+            npx cypress run
+          fi
 
-      - name: Upload Report as Artifact
-        if: always() 
-        uses: actions/upload-artifact@v4
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
         with:
           name: mochawesome-report
-          path: mochawesome-report 
+          path: cypress/reports
 
-      - name: Save Cypress Videos
-        if: always()  
-        uses: actions/upload-artifact@v4
-        with:
-          name: cypress-videos
-          path: cypress/videos 
-
-      - name: Save Cypress Screenshots
-        if: always() 
-        uses: actions/upload-artifact@v4
+      - name: Upload screenshots on failure
+        if: failure()
+        uses: actions/upload-artifact@v3
         with:
           name: cypress-screenshots
           path: cypress/screenshots
+
+      - name: Upload videos
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-videos
+          path: cypress/videos
