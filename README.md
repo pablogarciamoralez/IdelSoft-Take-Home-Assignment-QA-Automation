@@ -112,4 +112,5 @@ Dockerfile Used
     CMD ["npx", "cypress", "run"]
 
 Conclusion
+
     This framework is robust, scalable, and includes all required features such as POM, custom commands, test reporting, Docker support, and CI/CD integration. It ensures efficient and reliable end-to-end test automation for the Magento eCommerce platform.
