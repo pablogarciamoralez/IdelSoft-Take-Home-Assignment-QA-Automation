@@ -66,15 +66,19 @@ Containerized Execution with Docker
         docker run cypress-tests
 
 CI/CD with GitHub Actions
+
     1.Automatic Execution:
         Tests run automatically on every push to the main branch.
+        
     2.Manual Execution:
         *Go to the Actions tab in your GitHub repository.
         *Select Run Workflow and input a tag (e.g., shopping or sorting) to run specific tests.
+        
     3.Reports and Artifacts:
         *Test results and artifacts are uploaded to the Actions tab.
 
 Key Commands
+
     *Install dependencies:
     
         npm install
