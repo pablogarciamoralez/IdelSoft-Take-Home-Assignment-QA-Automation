@@ -58,8 +58,10 @@ Setup Instructions
                 npx cypress open
 
 Containerized Execution with Docker
+
     1.Build the Docker image:
         docker build -t cypress-tests .
+        
     2.Run the tests inside the container:
         docker run cypress-tests
 
@@ -74,14 +76,23 @@ CI/CD with GitHub Actions
 
 Key Commands
     *Install dependencies:
+    
         npm install
+        
     *Run tests locally in headless mode:
+    
         npx cypress run
+        
     *Open Cypress Test Runner:
+    
         npx cypress open
+        
     *Build Docker image:
+    
         docker build -t cypress-tests .
+        
     *Run tests in Docker:
+    
         docker run cypress-tests
 
 Dockerfile Used
