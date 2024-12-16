@@ -30,8 +30,10 @@ jobs:
       - name: Run Cypress tests (all or specific tag)
         run: |
           if [[ "${{ github.event.inputs.grepTag }}" != "" ]]; then
+            echo "Running tests with tag: ${{ github.event.inputs.grepTag }}"
             npx cypress run --env grepTags=${{ github.event.inputs.grepTag }}
           else
+            echo "Running all tests"
             npx cypress run
           fi
 
